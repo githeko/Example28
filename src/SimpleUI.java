@@ -1,16 +1,17 @@
-/**
- *
- * @author J M Githeko
- */
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+
+
 
 /**
  *
@@ -18,20 +19,65 @@ import javafx.scene.layout.HBox;
  */
 public class SimpleUI extends Application {
 
+
+
     @Override
     public void start(Stage primaryStage) {
 
 //Declare controls
-        Label pw = new Label("Enter word to translate"); //**
-        TextField pwBox = new TextField(); //**
+     Label pw = new Label("Enter word to translate"); //**
+      TextField pwBox = new TextField(); //**
         //Create Buttons
-        Button btn = new Button("Translate"); //**
-        Button btn1 = new Button("Clear"); //**
-        Button btn2 = new Button("Exit"); //**
+     Button btn = new Button("Translate"); //**
+     Button btn1 = new Button(); //**
+      Button btn2 = new Button("Exit"); //**
         //Event handler - Lambda Expression
-        btn.setOnAction(event -> handler1());
-        btn1.setOnAction(event -> handler2());
-        btn2.setOnAction(event -> handler3());
+
+        //Lambda expressions failed so I reverted to anonymous classes for handlers...
+      /* btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("I am translating!");
+            }
+        });
+
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("I am Clearing!");
+            }
+        });
+
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("I am Clearing!");
+            }
+        }); */
+/
+          btn1.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                  System.out.println("I am Translating!");
+              }
+          });
+          btn1.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                  System.out.println("I am Clearing!");
+              }
+          });
+          btn2.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                  System.out.println("I am Exiting!");
+              }
+          });
+
+
+
+
+
 //Add layouts
         //Create a Grid layout - read about Grid layout
         GridPane grid = new GridPane();
@@ -60,26 +106,14 @@ public class SimpleUI extends Application {
         primaryStage.show(); //**
 
 
+        }
+    public static void main(String[] args)
+    {
+        Application.launch(args);
+    }
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    public void handler1()
-    {
-        System.out.println("I am translating!");
-    }
-    public void handler2()
-    {
-        System.out.println("I am clear!");
-    }
-    public void handler3()
-    {
-        System.out.println("I am exitinng!");
-    }
-}
+
+
